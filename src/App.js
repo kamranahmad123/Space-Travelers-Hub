@@ -1,10 +1,10 @@
-import Nav from "./components/rockets/Nav";
+import Nav from './components/rockets/Nav';
 
 function App() {
   return (
-  <>
-  <Nav />
-  </> 
+    <div>
+      <Nav />
+    </div>
   );
 }
 

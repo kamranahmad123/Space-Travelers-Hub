@@ -1,4 +1,5 @@
 import React from 'react';
+// import { useSelector } from 'react-redux';
 import logo from '../assets/images.jpg';
 import '../styles/rockets.css';
 // import { useSelector } from 'react-redux';
@@ -26,7 +27,8 @@ function Rockets() {
       img: logo,
     },
   ];
-
+  // const displayData = useSelector((store) => store.any);
+  // console.log(displayData);
   return (
     <div>
       {arr.map((rockets) => (

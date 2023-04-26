@@ -3,12 +3,10 @@ import axios from 'axios';
 
 const rocketsUrl = 'https://api.spacexdata.com/v4/rockets';
 
-const fetchRocketsData = createAsyncThunk('rockets/fetchRocketData', async () => {
+export const RocketsData = createAsyncThunk('Rockets/RocketsData', async () => {
   const request = await axios.get(rocketsUrl);
   return request.data;
 });
-
-// console.log(fetchRocketsData);
 
 const initialState = {
   Rockets: [],
@@ -17,19 +15,19 @@ const initialState = {
 };
 
 const rocketSlice = createSlice({
-  name: 'rockets',
+  name: 'Rockets',
   initialState,
   extraReducers: (builder) => {
-    builder.case(fetchRocketsData.pending, (state) => ({
+    builder.addCase(RocketsData.pending, (state) => ({
       ...state,
       loading: true,
     }));
-    builder.case(fetchRocketsData.fulfilled, (state, action) => ({
+    builder.addCase(RocketsData.fulfilled, (state, action) => ({
       ...state,
       loading: false,
-      rockets: action.payload,
+      Rockets: action.payload,
     }));
-    builder.case(fetchRocketsData.rejected, (state, action) => ({
+    builder.addCase(RocketsData.rejected, (state, action) => ({
       ...state,
       loading: false,
       error: action.error.message,

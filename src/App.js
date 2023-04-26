@@ -10,6 +10,7 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<Rockets />} />
+  header-navigation
         <Route path="/missionPage" element={<Missions />} />
         <Route path="/ProfilePage" element={<Profile />} />
       </Routes>

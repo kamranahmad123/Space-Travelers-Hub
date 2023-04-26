@@ -37,10 +37,8 @@ li {
   padding: 0;
 }
 
+ header-navigation
 .navigation-item a {
-  text-decoration: none;
-  color: blue;
-}
 
 .projName {
   font-size: 140%;

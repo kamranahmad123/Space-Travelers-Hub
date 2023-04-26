@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
-import Navigation from './components/features/Navigation';
-import Rockets from './components/features/rockets';
-import Missions from './components/features/missions';
-import Profile from './components/features/profile';
+import Navigation from './components/rockets/Navigation';
+import Profile from './components/rockets/profile';
+import Missions from './components/rockets/missions';
+import Rockets from './components/rockets/rockets';
 
 function App() {
   return (
@@ -10,8 +10,9 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<Rockets />} />
-        <Route path="/one" element={<Missions />} />
-        <Route path="/two" element={<Profile />} />
+        header-navigation
+        <Route path="/missionPage" element={<Missions />} />
+        <Route path="/ProfilePage" element={<Profile />} />
       </Routes>
     </div>
   );

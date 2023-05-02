@@ -1,46 +1,40 @@
-import { createSlice } from '@reduxjs/toolkit';
-import dragon from '../../components/assets/dragon.jpg';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+
+const url = 'https://api.spacexdata.com/v4/dragons';
+
+export const getDragonData = createAsyncThunk('dragons/getDragonData', async () => {
+  const resp = await axios.get(url);
+  return resp.data;
+});
 
 const initialState = {
-  dragon: [
-    {
-      id: 1,
-      name: 'Dragon 1',
-      type: 'capsule',
-      description: 'Dragon is a reusable spacecraft developed by SpaceX, an American private space transportation company based in Hawthorne, California. Dragon is launched into space by the SpaceX Falcon 9 two-stage-to-orbit launch vehicle. The Dragon spacecraft was originally designed for human travel, but so far has only been used to deliver cargo to the International Space Station (ISS).',
-      flickr_images: dragon,
-    },
-    {
-      id: 1,
-      name: 'Dragon 2',
-      type: 'capsule2',
-      description: 'Dragon is a reusable spacecraft developed by SpaceX, an American private space transportation company based in Hawthorne, California. Dragon is launched into space by the SpaceX Falcon 9 two-stage-to-orbit launch vehicle. The Dragon spacecraft was originally designed for human travel, but so far has only been used to deliver cargo to the International Space Station (ISS).',
-      flickr_images: dragon,
-    },
-    {
-      id: 1,
-      name: 'Dragon 3',
-      type: 'capsule 3',
-      description: 'Dragon is a reusable spacecraft developed by SpaceX, an American private space transportation company based in Hawthorne, California. Dragon is launched into space by the SpaceX Falcon 9 two-stage-to-orbit launch vehicle. The Dragon spacecraft was originally designed for human travel, but so far has only been used to deliver cargo to the International Space Station (ISS).',
-      flickr_images: dragon,
-    },
-    {
-      id: 1,
-      name: 'Dragon 4',
-      type: 'capsule 4',
-      description: 'Dragon is a reusable spacecraft developed by SpaceX, an American private space transportation company based in Hawthorne, California. Dragon is launched into space by the SpaceX Falcon 9 two-stage-to-orbit launch vehicle. The Dragon spacecraft was originally designed for human travel, but so far has only been used to deliver cargo to the International Space Station (ISS).',
-      flickr_images: dragon,
-    },
-  ],
+  dragon: [],
+  loading: 'idle',
+  error: null,
 };
 
 const dragonsSlice = createSlice({
   name: 'dragons',
   initialState,
-  reducers: {
-    addDragons: {},
+  extraReducers: (builder) => {
+    builder.addCase(getDragonData.pending, (state) => ({
+      ...state,
+      loading: true,
+    }));
+
+    builder.addCase(getDragonData.fulfilled, (state, action) => ({
+      ...state,
+      loading: false,
+      dragons: action.payload,
+    }));
+
+    builder.addCase(getDragonData.rejected, (state, action) => ({
+      ...state,
+      loading: false,
+      error: action.error.message,
+    }));
   },
 });
 
-export const { addDragons } = dragonsSlice.actions;
 export default dragonsSlice.reducer;

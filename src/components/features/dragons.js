@@ -1,9 +1,21 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getDragonData } from '../../redux/dragons/dragonsSlice';
 import '../styles/dragonStyle.css';
 
 function Dragons() {
-  const dragons = useSelector((state) => state.dragons.dragon);
+  const { dragons, loading } = useSelector((state) => state.dragons);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getDragonData());
+  }, [dispatch]);
+
+  if (loading) {
+    return (
+      <div>Loading</div>
+    );
+  }
   return (
     <ul>
       {

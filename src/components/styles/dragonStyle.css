@@ -1,36 +1,31 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .dragonCont {
-    display: flex;
-    padding: 10px;
+  display: flex;
+  padding: 10px;
 }
 
 .dragonimg {
-    width: 15rem;
-    margin-right: 10px;
-    border-radius: 10px;
+  width: 15rem;
+  margin-right: 10px;
+  border-radius: 10px;
 }
 
 .dragonDetails {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.dragonName {
-    
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .dragonBtn {
-    width: 180px;
-    height: 40px;
-    border-radius: 10px;
-    background: blue;
-    color: white;
-    border: none;
-    font-size: 18px;
-
+  width: 180px;
+  height: 40px;
+  border-radius: 10px;
+  background: blue;
+  color: white;
+  border: none;
+  font-size: 18px;
 }

@@ -5,6 +5,7 @@ import '../styles/dragonStyle.css';
 
 function Dragons() {
   const dragons = useSelector((state) => state.dragons.dragon);
+  const loading = useSelector((state) => state.dragons.loading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,6 +18,10 @@ function Dragons() {
   const handleCancelBtn = (id) => {
     dispatch(cancelD(id));
   };
+
+  if (loading) {
+    return <div>loading...</div>;
+  }
 
   return (
     <ul>

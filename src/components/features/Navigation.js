@@ -16,6 +16,7 @@ function Navigation() {
       <ul className="navigation">
         <li><button className="rockets" type="button" onClick={addLine}><Link className="navigation-item" to="/">Rockets</Link></button></li>
         <li><button className="missions" type="button" onClick={addLine}><Link className="navigation-item" to="/one">Missions</Link></button></li>
+        <li><button className="dragons" type="button" onClick={addLine}><Link className="navigation-item" to="/one">Dragonsss</Link></button></li>
         <line className="border" />
         <li>
           <button

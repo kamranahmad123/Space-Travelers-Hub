@@ -27,7 +27,7 @@ li {
 .navigation {
   display: flex;
   gap: 45px;
-  width: 350px;
+  width: 25%;
   justify-content: flex-end;
   padding: 0;
   margin-right: 8px;

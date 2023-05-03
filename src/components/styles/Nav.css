@@ -7,8 +7,9 @@ li {
 
 .header-navigation {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-bottom: 30px;
+  margin-top: 25px;
 }
 
 .logo {
@@ -27,7 +28,7 @@ li {
 .navigation {
   display: flex;
   gap: 45px;
-  width: 25%;
+  width: 35%;
   justify-content: flex-end;
   padding: 0;
   margin-right: 8px;

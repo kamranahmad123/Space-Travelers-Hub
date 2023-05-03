@@ -31,7 +31,6 @@
 }
 
 .cancelBtn {
-
   width: 180px;
   height: 40px;
   background: none;
@@ -43,12 +42,12 @@
 
 .reserved {
   height: 10px;
-    border-radius: 10px;
-    color: white;
-    background: green;
+  border-radius: 10px;
+  color: white;
+  background: green;
 }
+
 .reservecont {
   height: auto;
   border: 2px solid red;
 }
-

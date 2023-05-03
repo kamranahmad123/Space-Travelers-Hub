@@ -37,7 +37,7 @@ function Dragons() {
                     {' '}
                     {dragon.description}
                   </div>
-                  {!dragon.reserved && <button onClick={() => handleReserveBtn(dragon.id)} className="dragonBtn" type="submit">Reserve Rocket</button> }
+                  {!dragon.reserved && <button onClick={() => handleReserveBtn(dragon.id)} className="dragonBtn" type="submit">Reserve Dragon</button> }
                   {dragon.reserved && <button onClick={() => handleCancelBtn(dragon.id)} className="cancelBtn" type="submit">Cancel Reservation</button> }
                 </div>
               </li>

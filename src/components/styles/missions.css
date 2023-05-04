@@ -15,13 +15,21 @@
   padding: 5px 8px;
   cursor: pointer;
   font-family: 'Lato', sans-serif;
-  font-size: 15px;
+  font-size: 13px;
+  border-radius: 3px;
 }
 
 .missions-table tr th,
 .missions-table tr td {
   border: 1px solid #c7c5c5;
   padding: 10px;
+}
+
+.missions-table span {
+  border: 1px solid #121212;
+  padding: 2px 4px;
+  background-color: #ccc;
+  border-radius: 3px;
 }
 
 .missions-table thead tr {

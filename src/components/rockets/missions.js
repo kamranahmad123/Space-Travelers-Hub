@@ -4,7 +4,14 @@ import { MissionsData, joinMission, leaveMission } from '../../redux/missions/mi
 import '../styles/missions.css';
 
 function Missions() {
-  const displayMissionData = useSelector((state) => state.Mission.Missions);
+  const displayMissionData = useSelector((state) => state.Mission.Missions.map((mission) => {
+    if (state.Mission.joinedMissions.some(
+      (joinedMission) => joinedMission.mission_id === mission.mission_id,
+    )) {
+      return { ...mission, joined: true };
+    }
+    return { ...mission, joined: false };
+  }));
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(MissionsData());
@@ -34,8 +41,8 @@ function Missions() {
             <tr key={mission.mission_id}>
               <td>{mission.mission_name}</td>
               <td>{mission.description}</td>
-              {mission.joined && <td>Active member</td>}
-              {!mission.joined && <td>Not a member</td>}
+              {mission.joined && <td><span>Active member</span></td>}
+              {!mission.joined && <td><span>Not a member</span></td>}
               {!mission.joined && <td><button type="button" onClick={() => handleJoinButton(mission.mission_id)}>Join Mission</button></td>}
               {mission.joined && <td><button type="button" onClick={() => handleLeaveButton(mission.mission_id)}>Leave Mission</button></td>}
             </tr>

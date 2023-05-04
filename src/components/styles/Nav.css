@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+
 li {
   list-style: none;
   text-decoration: none;
@@ -5,13 +7,15 @@ li {
 
 .header-navigation {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-bottom: 30px;
+  margin-top: 25px;
 }
 
 .logo {
   width: 50px;
   height: 50px;
+  margin-top: 6px;
 }
 
 .header {
@@ -24,7 +28,7 @@ li {
 .navigation {
   display: flex;
   gap: 45px;
-  width: 25%;
+  width: 35%;
   justify-content: flex-end;
   padding: 0;
   margin-right: 8px;
@@ -33,6 +37,8 @@ li {
 .navigation-item {
   text-decoration: none;
   color: blue;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
 }
 
 .border {
@@ -44,17 +50,16 @@ li {
   padding: 0;
 }
 
-.projName {
-  font-size: 140%;
-  margin-top: 10px;
-}
-
 .active {
   text-decoration: underline blue;
 }
 
 .proj-name {
-  font-size: 130%;
+  font-size: 30px;
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+  margin-top: 10px;
 }
 
 @media only screen and (max-width: 700px) {

@@ -3,13 +3,13 @@ import { useSelector } from 'react-redux';
 import '../styles/profile.css';
 
 function Profile() {
-  const joinedMissions = useSelector(state => state.Mission.joinedMissions);
+  const joinedMissions = useSelector((state) => state.Mission.joinedMissions);
 
   return (
     <div className="profile">
       <div className="missions">
         <h2>My Missions</h2>
-        {joinedMissions.map(mission => (
+        {joinedMissions.map((mission) => (
           <div key={mission.mission_id} className="mission">
             {mission.mission_name}
           </div>
@@ -25,4 +25,3 @@ function Profile() {
 }
 
 export default Profile;
-

@@ -21,22 +21,20 @@ const missionSlice = createSlice({
   reducers: {
     joinMission: (state, action) => {
       const joinedMission = state.Missions.find(
-        (mission) => mission.mission_id === action.payload
+        (mission) => mission.mission_id === action.payload,
       );
       return {
         ...state,
         joinedMissions: [...state.joinedMissions, joinedMission],
       };
     },
-    
-    leaveMission: (state, action) => {
-      return {
-        ...state,
-        joinedMissions: state.joinedMissions.filter(
-          (mission) => mission.mission_id !== action.payload
-        ),
-      };
-    },
+
+    leaveMission: (state, action) => ({
+      ...state,
+      joinedMissions: state.joinedMissions.filter(
+        (mission) => mission.mission_id !== action.payload,
+      ),
+    }),
   },
   extraReducers: (builder) => {
     builder.addCase(MissionsData.pending, (state) => ({

@@ -1,21 +1,28 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getDragonData } from '../../redux/dragons/dragonsSlice';
+import { getDragonData, reserveD, cancelD } from '../../redux/dragons/dragonsSlice';
 import '../styles/dragonStyle.css';
 
 function Dragons() {
-  const { dragons, loading } = useSelector((state) => state.dragons);
+  const dragons = useSelector((state) => state.dragons.dragon);
+  const loading = useSelector((state) => state.dragons.loading);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getDragonData());
   }, [dispatch]);
 
+  const handleReserveBtn = (id) => {
+    dispatch(reserveD(id));
+  };
+  const handleCancelBtn = (id) => {
+    dispatch(cancelD(id));
+  };
+
   if (loading) {
-    return (
-      <div>Loading</div>
-    );
+    return <div>loading...</div>;
   }
+
   return (
     <ul>
       {
@@ -25,10 +32,18 @@ function Dragons() {
                   <img className="dragonimg" alt="dragons" src={dragon.flickr_images} />
                 </div>
                 <div className="dragonDetails">
-                  <h3>{dragon.name}</h3>
+                  <h3>
+                    {dragon.name}
+                    {dragon.reserved}
+                  </h3>
                   <h4>{dragon.type}</h4>
-                  <div>{dragon.description}</div>
-                  <button className="dragonBtn" type="submit">Reserve Dragon</button>
+                  <div>
+                    {dragon.reserved && (<span className="reserved"> Reserved </span>)}
+                    {' '}
+                    {dragon.description}
+                  </div>
+                  {!dragon.reserved && <button onClick={() => handleReserveBtn(dragon.id)} className="dragonBtn" type="submit">Reserve Dragon</button> }
+                  {dragon.reserved && <button onClick={() => handleCancelBtn(dragon.id)} className="cancelBtn" type="submit">Cancel Reservation</button> }
                 </div>
               </li>
             ))

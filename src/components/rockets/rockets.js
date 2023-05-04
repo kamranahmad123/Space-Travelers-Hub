@@ -25,6 +25,7 @@ function Rockets() {
           <div className="rocket-description">
             <h3 className="name">{rockets.name}</h3>
             <div className="container">
+              {rockets.reserved && <p className="status-display">Reserved</p>}
               <p>{rockets.description}</p>
             </div>
             {!rockets.reserved && <button onClick={() => handlereservedButton(rockets.id)} className="rocket-button" type="submit">Reserve Rocket</button> }

@@ -31,6 +31,20 @@
   color: grey;
 }
 
+.status-display {
+  height: 16px;
+  width: 50px;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 10%;
+  font-size: small;
+  margin-top: 15px;
+  padding-top: 1px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
 .container {
   display: flex;
   gap: 4px;

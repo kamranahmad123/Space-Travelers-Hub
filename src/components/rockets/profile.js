@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import '../styles/profile.css';
-import { RocketsData } from '../../redux/rockets/rocketSlice';
 
 function Profile() {
   const joinedMissions = useSelector((state) => state.Mission.joinedMissions);
+  const joinedRockets = useSelector((state) => state.Rocket.reserveRockets);
   const dragons = useSelector((state) => state.dragons);
   const reservedDragons = dragons.filter((dragon) => dragon.reserved === true);
   return (
@@ -19,7 +19,7 @@ function Profile() {
       </div>
       <div className="rockets">
         <h2>My Rockets</h2>
-        {RocketsData.map((rockets) => (
+        {joinedRockets.map((rockets) => (
           <div key={rockets.id} className="rockets-display">
             { rockets.name }
           </div>

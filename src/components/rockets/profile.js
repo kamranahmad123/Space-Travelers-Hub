@@ -4,16 +4,9 @@ import '../styles/profile.css';
 import { RocketsData } from '../../redux/rockets/rocketSlice';
 
 function Profile() {
-  const displayData = useSelector((state) => state.Rocket.Rockets);
-  const dispatch = useDispatch();
   const joinedMissions = useSelector((state) => state.Mission.joinedMissions);
-  // console.log(displayData);
-  // const displayData = useSelector((state) => state.Rocket.Rockets);
-  // const dispatch = useDispatch();
-  // console.log(displayData);
-  // useEffect(() => {
-  //   dispatch(RocketsData());
-  // }, [dispatch]);
+  const displayData = useSelector((state) => state.Rocket.reserveRockets);
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(RocketsData());
   }, [dispatch]);
@@ -31,7 +24,7 @@ function Profile() {
         <h2>My Rockets</h2>
         {displayData.map((rockets) => (
           <div key={rockets.id} className="rockets-display">
-            {rockets.reserved && rockets.name}
+            { rockets.name }
           </div>
         ))}
       </div>

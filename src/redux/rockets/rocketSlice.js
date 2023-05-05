@@ -18,45 +18,23 @@ const initialState = {
 const rocketSlice = createSlice({
   name: 'Rockets',
   initialState,
-  /* Book button */
   reducers: {
     RocketsBooking: (state, action) => {
-      const RocketsReserved = state.Rockets.map((items) => {
-        if (items.id === action.payload) {
-          return {
-            ...items,
-            reserved: true,
-
-          };
-        }
-        return items;
-      });
-      return { ...state, Rockets: RocketsReserved };
-      // const RocketsReserved = state.Rockets.find(
-      //   (rocket) => rocket.id === action.payload,
-      // );
-      // return {
-      //   ...state,
-      //   reserveRockets: [...state.reserveRockets, RocketsReserved],
-      // };
-    },
-    CancelRocket: (state, action) => {
-      const RocketsReserved = state.Rockets.map((items) => {
-        if (action.payload !== items.id) {
-          return items;
-        }
-        return {
-          ...items,
-          reserved: false,
-        };
-      });
+      const RocketsReserved = state.Rockets.find(
+        (rocket) => rocket.id === action.payload,
+      );
       return {
         ...state,
-        Rockets: RocketsReserved,
+        reserveRockets: [...state.reserveRockets, RocketsReserved],
       };
     },
+    CancelRocket: (state, action) => ({
+      ...state,
+      reserveRockets: state.reserveRockets.filter(
+        (rocket) => rocket.id !== action.payload,
+      ),
+    }),
   },
-  // Rocket fetch section
   extraReducers: (builder) => {
     builder.addCase(RocketsData.pending, (state) => ({
       ...state,

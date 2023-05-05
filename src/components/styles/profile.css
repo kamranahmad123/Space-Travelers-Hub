@@ -21,7 +21,7 @@
   margin-bottom: 12px;
 }
 
-.mission {
+.mission, .rockets-display {
   margin-bottom: 8px;
   border: 1px solid #121212;
   padding: 10px 12px;

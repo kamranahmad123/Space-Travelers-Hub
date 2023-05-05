@@ -4,7 +4,14 @@ import '../styles/rockets.css';
 import { RocketsData, RocketsBooking, CancelRocket } from '../../redux/rockets/rocketSlice';
 
 function Rockets() {
-  const displayData = useSelector((state) => state.Rocket.Rockets);
+  const displayData = useSelector((state) => state.Rocket.Rockets.map((rocket) => {
+    if (state.Rocket.reserveRockets.some(
+      (RocketsReserved) => RocketsReserved.id === rocket.id,
+    )) {
+      return { ...rocket, reserved: true };
+    }
+    return { ...rocket, reserved: false };
+  }));
   const dispatch = useDispatch();
   const handlereservedButton = (id) => {
     dispatch(RocketsBooking(id));

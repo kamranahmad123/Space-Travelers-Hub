@@ -5,7 +5,7 @@ import dragonsSlice from '../../../redux/dragons/dragonsSlice';
 import store from '../../../redux/store';
 import '@testing-library/jest-dom';
 
-describe('Dragon component', () => {
+describe('Dragon Slice', () => {
   it('matches snapshot', () => {
     const tree = renderer.create(
       <Provider store={store}>

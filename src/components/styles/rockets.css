@@ -20,7 +20,7 @@
   background-color: blue;
   color: white;
   border: none;
-  border-radius: 5%;
+  border-radius: 5px;
   margin-top: 10px;
   width: 100px;
 }
@@ -28,7 +28,7 @@
 .rocket-cancel {
   height: 25px;
   background-color: white;
-  border-radius: 5%;
+  border-radius: 10px;
   border: 1px grey solid;
   color: grey;
 }
@@ -41,7 +41,7 @@
   border: none;
   border-radius: 10%;
   font-size: small;
-  margin-top: 15px;
+  margin-top: -1px;
   padding-top: 1px;
   padding-left: 2px;
   padding-right: 2px;
@@ -55,8 +55,4 @@
 
 .name {
   margin-bottom: -5px;
-}
-
-.status-display {
-  margin-top: -1px;
 }

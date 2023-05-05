@@ -8,7 +8,7 @@
 
 | Project Veiw Screenshots|
 |---------------------------------------|
-|<div align="center"><img src="./src/Components/assets/logo.png" alt="screenshot" width="auto" height="auto"/></div>|
+|<div align="center"><img src="./src/components/assets/logo.png" alt="screenshot" width="auto" height="auto"/></div>|
 
 # ￼ Table of Contents
 

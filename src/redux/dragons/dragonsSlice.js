@@ -1,45 +1,56 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const url = 'https://api.spacexdata.com/v4/dragons';
-
-export const getDragonData = createAsyncThunk('dragons/get', async () => {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-  const data = await response.json();
-  return data;
+export const dragonData = createAsyncThunk('dragons/dragonData', async () => {
+  const request = await fetch(url);
+  return request.json();
 });
 
-export const dragonsSlice = createSlice({
+const initialState = {
+  dragons: [],
+  reserveDragons: [],
+  loading: false,
+  error: '',
+};
+
+const dragonsSlice = createSlice({
   name: 'dragons',
-  initialState: [],
+  initialState,
   reducers: {
-    reserveD(state, action) {
-      return state.map((dragon) => {
-        if (dragon.id !== action.payload) {
-          return { ...dragon };
-        }
-        return { ...dragon, reserved: true };
-      });
+    dragonBooking: (state, action) => {
+      const dragonsReserved = state.dragons.find(
+        (dragon) => dragon.id === action.payload,
+      );
+      return {
+        ...state,
+        reserveDragons: [...state.reserveDragons, dragonsReserved],
+      };
     },
-    cancelD(state, action) {
-      return state.map((dragon) => {
-        if (dragon.id !== action.payload) {
-          return { ...dragon };
-        }
-        return { ...dragon, reserved: false };
-      });
-    },
+    CancelDragon: (state, action) => ({
+      ...state,
+      reserveDragons: state.reserveDragons.filter(
+        (dragon) => dragon.id !== action.payload,
+      ),
+    }),
   },
-  extraReducers(builder) {
-    builder.addCase(getDragonData.fulfilled, (state, action) => {
-      const dragons = action.payload;
-      return dragons;
-    });
+  extraReducers: (builder) => {
+    builder.addCase(dragonData.pending, (state) => ({
+      ...state,
+      loading: true,
+    }));
+    builder.addCase(dragonData.fulfilled, (state, action) => ({
+      ...state,
+      loading: false,
+      dragons: action.payload,
+    }));
+    builder.addCase(dragonData.rejected, (state, action) => ({
+      ...state,
+      loading: false,
+      error: action.error.message,
+    }));
   },
 });
-
-export const { cancelD, reserveD } = dragonsSlice.actions;
 
 export default dragonsSlice.reducer;
+
+export const { dragonBooking, CancelDragon } = dragonsSlice.actions;

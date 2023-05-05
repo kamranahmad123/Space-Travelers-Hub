@@ -5,8 +5,7 @@ import '../styles/profile.css';
 function Profile() {
   const joinedMissions = useSelector((state) => state.Mission.joinedMissions);
   const joinedRockets = useSelector((state) => state.Rocket.reserveRockets);
-  const dragons = useSelector((state) => state.dragons);
-  const reservedDragons = dragons.filter((dragon) => dragon.reserved === true);
+  const reservedDrag = useSelector((state) => state.dragons.reserveDragons);
   return (
     <div className="profile">
       <div className="missions">
@@ -27,7 +26,7 @@ function Profile() {
       </div>
       <div className="missions">
         <h2>My Dragons</h2>
-        {reservedDragons.map((dragon) => (
+        {reservedDrag.map((dragon) => (
           <div key={dragon.id} className="mission">
             {dragon.name}
           </div>

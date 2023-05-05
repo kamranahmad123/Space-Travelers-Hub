@@ -1,28 +1,27 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getDragonData, reserveD, cancelD } from '../../redux/dragons/dragonsSlice';
 import '../styles/dragonStyle.css';
+import { dragonData, dragonBooking, CancelDragon } from '../../redux/dragons/dragonsSlice';
 
 function Dragons() {
-  const dragons = useSelector((state) => state.dragons);
-  const loading = useSelector((state) => state.dragons.loading);
-
+  const dragons = useSelector((state) => state.dragons.dragons.map((dragon) => {
+    if (state.dragons.reserveDragons.some(
+      (dragonsReserved) => dragonsReserved.id === dragon.id,
+    )) {
+      return { ...dragon, reserved: true };
+    }
+    return { ...dragon, reserved: false };
+  }));
   const dispatch = useDispatch();
-
+  const handlereservedButton = (id) => {
+    dispatch(dragonBooking(id));
+  };
+  const handleCancelButton = (id) => {
+    dispatch(CancelDragon(id));
+  };
   useEffect(() => {
-    dispatch(getDragonData());
+    dispatch(dragonData());
   }, [dispatch]);
-
-  const handleReserveBtn = (id) => {
-    dispatch(reserveD(id));
-  };
-  const handleCancelBtn = (id) => {
-    dispatch(cancelD(id));
-  };
-
-  if (loading) {
-    return <div>loading....</div>;
-  }
 
   return (
     <ul>
@@ -43,14 +42,9 @@ dragons.map((dragon) => (
         {dragon.reserved && <p className="reserved">Reserved</p>}
         <p>{dragon.description}</p>
       </div>
-      {/* <span>
-<p className="reserved">{dragon.reserved && <p>'Reserved'</p>}</p>
-{' '}
-{dragon.description}
-</span> */}
 
-      {!dragon.reserved && <button onClick={() => handleReserveBtn(dragon.id)} className="dragonBtn" type="submit">Reserve Dragon</button> }
-      {dragon.reserved && <button onClick={() => handleCancelBtn(dragon.id)} className="cancelBtn" type="submit">Cancel Reservation</button> }
+      {!dragon.reserved && <button onClick={() => handlereservedButton(dragon.id)} className="dragonBtn" type="submit">Reserve Dragon</button> }
+      {dragon.reserved && <button onClick={() => handleCancelButton(dragon.id)} className="cancelBtn" type="submit">Cancel Reservation</button> }
     </div>
   </li>
 ))

@@ -18,7 +18,7 @@ export const dragonsSlice = createSlice({
     reserveD(state, action) {
       return state.map((dragon) => {
         if (dragon.id !== action.payload) {
-          return { ...dragon};
+          return { ...dragon };
         }
         return { ...dragon, reserved: true };
       });
@@ -34,9 +34,9 @@ export const dragonsSlice = createSlice({
   },
   extraReducers(builder) {
     builder.addCase(getDragonData.fulfilled, (state, action) => {
-      const dragons = action.payload
+      const dragons = action.payload;
       return dragons;
-    }); 
+    });
   },
 });
 

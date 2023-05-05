@@ -4,9 +4,9 @@ import { getDragonData, reserveD, cancelD } from '../../redux/dragons/dragonsSli
 import '../styles/dragonStyle.css';
 
 function Dragons() {
-  const dragons = useSelector((state) => state.dragons);  
+  const dragons = useSelector((state) => state.dragons);
   const loading = useSelector((state) => state.dragons.loading);
-  
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function Dragons() {
   };
 
   if (loading) {
-    return <div>loading...</div>;
+    return <div>loading....</div>;
   }
 
   return (
@@ -40,10 +40,10 @@ function Dragons() {
                   <h4>{dragon.type}</h4>
 
                   <div className="container_dragons">
-              {dragon.reserved && <p className="reserved">Reserved</p>}
-              <p>{dragon.description}</p>
-            </div>
-                  {/* <span>                    
+                    {dragon.reserved && <p className="reserved">Reserved</p>}
+                    <p>{dragon.description}</p>
+                  </div>
+                  {/* <span>
                   <p className="reserved">{dragon.reserved && <p>'Reserved'</p>}</p>
                     {' '}
                     {dragon.description}

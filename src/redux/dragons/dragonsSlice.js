@@ -16,50 +16,49 @@ const initialState = {
   reservedDragons: [],
   loading: false,
   error: '',
-}
-
+};
 
 export const dragonsSlice = createSlice({
   name: 'dragons',
   initialState,
   reducers: {
-    /*reserveD(state, action) {
+    /* reserveD(state, action) {
       return state.map((dragon) => {
         if (dragon.id !== action.payload) {
           return { ...dragon};
         }
         return { ...dragon, reserved: true };
       });
-    },*/
+    }, */
     reserveD: (state, action) => {
       const reservedDrag = state.dragons.find(
-        (dragon) => dragon.dragon.id === action.payload,
+        (dragon) => dragon.id === action.payload,
       );
       return {
         ...state,
         reservedDragons: [...state.reservedDragons, reservedDrag],
       };
     },
-    /*cancelD(state, action) {
+    /* cancelD(state, action) {
       return state.map((dragon) => {
         if (dragon.id !== action.payload) {
           return { ...dragon };
         }
         return { ...dragon, reserved: false };
       });
-    },*/
+    }, */
     leaveMission: (state, action) => ({
       ...state,
       reservedDragons: state.reservedDragons.filter(
-        (dragon) => dragon.dragon.id !== action.payload,
+        (dragon) => dragon.id !== action.payload,
       ),
     }),
   },
   extraReducers(builder) {
     builder.addCase(getDragonData.fulfilled, (state, action) => {
-      state.dragons = action.payload
+      state.dragons = action.payload;
       return state;
-    }); 
+    });
   },
 });
 

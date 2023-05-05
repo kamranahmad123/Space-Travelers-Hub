@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import Dragons from '../dragons';
 import store from '../../../redux/store';
 import '@testing-library/jest-dom';
-import { reserveD } from '../../../redux/dragons/dragonsSlice';
 
 describe('Dragon component', () => {
   it('matches snapshot', () => {
@@ -19,4 +18,4 @@ describe('Dragon component', () => {
   test('that jest is working', () => {
     expect(true).toBe(true);
   });
-  });
+});

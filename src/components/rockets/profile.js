@@ -5,8 +5,7 @@ import '../styles/profile.css';
 function Profile() {
   const joinedMissions = useSelector((state) => state.Mission.joinedMissions);
   const dragons = useSelector((state) => state.dragons);
-  const reservedDragons = dragons.filter((dragon) => dragon.reserved === true)
-
+  const reservedDragons = dragons.filter((dragon) => dragon.reserved === true);
 
   return (
     <div className="profile">

@@ -1,15 +1,12 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import '../styles/profile.css';
 import { RocketsData } from '../../redux/rockets/rocketSlice';
 
 function Profile() {
   const joinedMissions = useSelector((state) => state.Mission.joinedMissions);
-  const displayData = useSelector((state) => state.Rocket.reserveRockets);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(RocketsData());
-  }, [dispatch]);
+  const dragons = useSelector((state) => state.dragons);
+  const reservedDragons = dragons.filter((dragon) => dragon.reserved === true);
   return (
     <div className="profile">
       <div className="missions">
@@ -22,9 +19,17 @@ function Profile() {
       </div>
       <div className="rockets">
         <h2>My Rockets</h2>
-        {displayData.map((rockets) => (
+        {RocketsData.map((rockets) => (
           <div key={rockets.id} className="rockets-display">
             { rockets.name }
+          </div>
+        ))}
+      </div>
+      <div className="missions">
+        <h2>My Dragons</h2>
+        {reservedDragons.map((dragon) => (
+          <div key={dragon.id} className="mission">
+            {dragon.name}
           </div>
         ))}
       </div>

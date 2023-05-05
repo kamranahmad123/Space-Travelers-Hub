@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import store from '../../../redux/store';
 import '@testing-library/jest-dom';
 import Missions from '../../rockets/missions';
-describe('Dragon component', () => {
+describe('Missions component', () => {
   it('matches snapshot', () => {
     const tree = renderer.create(
       <Provider store={store}>

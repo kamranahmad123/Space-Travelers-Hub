@@ -60,14 +60,23 @@
 // export const { joinMission, leaveMission } = missionSlice.actions;
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+//import axios from 'axios';
 
 const missionsURL = 'https://api.spacexdata.com/v3/missions';
 
-export const MissionsData = createAsyncThunk('Missions/MissionData', async () => {
+/*export const MissionsData = createAsyncThunk('Missions/MissionData', async () => {
   const request = await axios.get(missionsURL);
 
   return request.data;
+});*/
+export const MissionsData  = createAsyncThunk('Missions/MissionData', async () => {
+  const request = await fetch(missionsURL);
+  if (!request.ok) {
+    throw new Error(`HTTP error! status: ${request.status}`);
+  }
+  const data = await request.json();
+  return data;
+  //console.log()
 });
 
 const initialState = {
@@ -107,6 +116,11 @@ const missionSlice = createSlice({
       state.loading = false;
       state.Missions = action.payload;
     });
+
+    /*builder.addCase(MissionsData.fulfilled, (state, action) => {
+      const Missions = action.payload;
+      return Missions;
+    });*/
 
     builder.addCase(MissionsData.rejected, (state, action) => {
       state.loading = false;

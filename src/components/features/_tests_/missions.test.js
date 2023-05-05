@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import store from '../../../redux/store';
 import '@testing-library/jest-dom';
 import Missions from '../../rockets/missions';
+
 describe('Missions component', () => {
   it('matches snapshot', () => {
     const tree = renderer.create(

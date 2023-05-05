@@ -6,16 +6,16 @@ import store from '../../../redux/store';
 import '@testing-library/jest-dom';
 
 describe('Dragon component', () => {
-it('matches snapshot', () => {
-const tree = renderer.create(
-<Provider store={store}>
-<Dragons />
-</Provider>,
-).toJSON();
-expect(tree).toMatchSnapshot();
-});
+  it('matches snapshot', () => {
+    const tree = renderer.create(
+      <Provider store={store}>
+        <Dragons />
+      </Provider>,
+    ).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
-test('that jest is working', () => {
-expect(true).toBe(true);
-});
+  test('that jest is working', () => {
+    expect(true).toBe(true);
+  });
 });

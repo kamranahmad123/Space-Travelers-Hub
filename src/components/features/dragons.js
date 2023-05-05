@@ -4,6 +4,7 @@ import { getDragonData, reserveD, cancelD } from '../../redux/dragons/dragonsSli
 import '../styles/dragonStyle.css';
 
 function Dragons() {
+
   const dragons = useSelector((state) => state.dragons);
   const loading = useSelector((state) => state.dragons.loading);
 
@@ -21,7 +22,9 @@ function Dragons() {
   };
 
   if (loading) {
+
     return <div>loading....</div>;
+
   }
 
   return (
@@ -55,6 +58,7 @@ dragons.map((dragon) => (
   </li>
 ))
 }
+
     </ul>
   );
 }

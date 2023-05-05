@@ -41,13 +41,22 @@
 }
 
 .reserved {
-  height: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  width: 110px;
   border-radius: 10px;
   color: white;
   background: green;
 }
 
+.container_dragons {
+  display: flex;
+  gap: 10px;
+}
+
 .reservecont {
   height: auto;
-  border: 2px solid red;
+  border: 2px solid blue;
 }

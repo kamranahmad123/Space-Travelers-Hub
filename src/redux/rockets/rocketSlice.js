@@ -10,6 +10,7 @@ export const RocketsData = createAsyncThunk('Rockets/RocketsData', async () => {
 
 const initialState = {
   Rockets: [],
+  reserveRockets: [],
   loading: false,
   error: '',
 };
@@ -31,6 +32,13 @@ const rocketSlice = createSlice({
         return items;
       });
       return { ...state, Rockets: RocketsReserved };
+      // const RocketsReserved = state.Rockets.find(
+      //   (rocket) => rocket.id === action.payload,
+      // );
+      // return {
+      //   ...state,
+      //   reserveRockets: [...state.reserveRockets, RocketsReserved],
+      // };
     },
     CancelRocket: (state, action) => {
       const RocketsReserved = state.Rockets.map((items) => {

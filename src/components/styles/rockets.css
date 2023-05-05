@@ -12,7 +12,7 @@
 }
 
 .rocket-description {
-  margin-top: -21px;
+  margin-top: -2px;
 }
 
 .rocket-button {
@@ -21,6 +21,7 @@
   color: white;
   border: none;
   border-radius: 5%;
+  margin-top: 10px;
 }
 
 .rocket-cancel {
@@ -48,8 +49,13 @@
 .container {
   display: flex;
   gap: 4px;
+  margin-top: 20px;
 }
 
 .name {
   margin-bottom: -5px;
+}
+
+.status-display {
+  margin-top: -1px;
 }

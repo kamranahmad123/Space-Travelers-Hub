@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import '../styles/rockets.css';
 import { RocketsData, RocketsBooking, CancelRocket } from '../../redux/rockets/rocketSlice';
 
@@ -28,8 +28,24 @@ function Rockets() {
               {rockets.reserved && <p className="status-display">Reserved</p>}
               <p>{rockets.description}</p>
             </div>
-            {!rockets.reserved && <button onClick={() => handlereservedButton(rockets.id)} className="rocket-button" type="submit">Reserve Rocket</button> }
-            {rockets.reserved && <button onClick={() => handleCancelButton(rockets.id)} className="rocket-cancel" type="submit">Cancel Reservation</button> }
+            {!rockets.reserved && (
+            <button
+              onClick={() => handlereservedButton(rockets.id)}
+              className="rocket-button"
+              type="submit"
+            >
+              Reserve Rocket
+            </button>
+            ) }
+            {rockets.reserved && (
+            <button
+              onClick={() => handleCancelButton(rockets.id)}
+              className="rocket-cancel"
+              type="submit"
+            >
+              Cancel Reservation
+            </button>
+            ) }
           </div>
           <br />
         </div>

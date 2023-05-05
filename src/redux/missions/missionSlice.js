@@ -60,7 +60,7 @@
 // export const { joinMission, leaveMission } = missionSlice.actions;
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+//import axios from 'axios';
 
 const missionsURL = 'https://api.spacexdata.com/v3/missions';
 

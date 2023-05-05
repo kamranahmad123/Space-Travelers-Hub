@@ -4,8 +4,9 @@ import { getDragonData, reserveD, cancelD } from '../../redux/dragons/dragonsSli
 import '../styles/dragonStyle.css';
 
 function Dragons() {
-  const dragons = useSelector((state) => state.dragons.dragon);
+  const dragons = useSelector((state) => state.dragons);  
   const loading = useSelector((state) => state.dragons.loading);
+  
   const dispatch = useDispatch();
 
   useEffect(() => {

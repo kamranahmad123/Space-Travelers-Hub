@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
 import Dragons from '../dragons';
 import store from '../../../redux/store';
+import '@testing-library/jest-dom';
 import { reserveD } from '../../../redux/dragons/dragonsSlice';
 
 describe('Dragon component', () => {
@@ -19,6 +20,3 @@ describe('Dragon component', () => {
     expect(true).toBe(true);
   });
   });
-
-
-

@@ -4,8 +4,16 @@ import { getDragonData, reserveD, cancelD } from '../../redux/dragons/dragonsSli
 import '../styles/dragonStyle.css';
 
 function Dragons() {
-  const dragons = useSelector((state) => state.dragons);  
-  const loading = useSelector((state) => state.dragons.loading);
+  // const dragons = useSelector((state) => state.dragons);  
+  // const loading = useSelector((state) => state.dragons.loading);
+  const dragons = useSelector((state) => state.dragons.dragons.map((dragon) => {
+    if (state.dragons.reservedDragons.some(
+      (reservedDrag) => reservedDrag.dragon.id === dragons.dragons.id,
+    )) {
+      return { ...dragons, reserved: true };
+    }
+    return { ...dragons, reserved: false };
+  }));
   
   const dispatch = useDispatch();
 
@@ -20,7 +28,7 @@ function Dragons() {
     dispatch(cancelD(id));
   };
 
-  if (loading) {
+  if (!dragons) {
     return <div>loading...</div>;
   }
 
@@ -38,11 +46,12 @@ function Dragons() {
                     {dragon.reserved}
                   </h3>
                   <h4>{dragon.type}</h4>
-                  <div>
-                    {dragon.reserved && (<span className="reserved"> Reserved </span>)}
-                    {' '}
-                    {dragon.description}
-                  </div>
+
+                  <div className="container_dragons">
+              {dragon.reserved && <p className="reserved">Reserved</p>}
+              <p>{dragon.description}</p>
+            </div>
+
                   {!dragon.reserved && <button onClick={() => handleReserveBtn(dragon.id)} className="dragonBtn" type="submit">Reserve Dragon</button> }
                   {dragon.reserved && <button onClick={() => handleCancelBtn(dragon.id)} className="cancelBtn" type="submit">Cancel Reservation</button> }
                 </div>

@@ -1,40 +1,46 @@
+
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 
 const url = 'https://api.spacexdata.com/v4/dragons';
 
-export const getDragonData = createAsyncThunk('dragons/getDragonData', async () => {
-  const resp = await axios.get(url);
-  return resp.data;
+export const getDragonData = createAsyncThunk('dragons/get', async () => {
+const response = await fetch(url);
+if (!response.ok) {
+throw new Error(`HTTP error! status: ${response.status}`);
+}
+const data = await response.json();
+return data;
 });
 
-const initialState = {
-  dragon: [],
-  loading: 'idle',
-  error: null,
-};
-
-const dragonsSlice = createSlice({
-  name: 'dragons',
-  initialState,
-  extraReducers: (builder) => {
-    builder.addCase(getDragonData.pending, (state) => ({
-      ...state,
-      loading: true,
-    }));
-
-    builder.addCase(getDragonData.fulfilled, (state, action) => ({
-      ...state,
-      loading: false,
-      dragons: action.payload,
-    }));
-
-    builder.addCase(getDragonData.rejected, (state, action) => ({
-      ...state,
-      loading: false,
-      error: action.error.message,
-    }));
-  },
+export const dragonsSlice = createSlice({
+name: 'dragons',
+initialState: [],
+reducers: {
+reserveD(state, action) {
+return state.map((dragon) => {
+if (dragon.id !== action.payload) {
+return { ...dragon };
+}
+return { ...dragon, reserved: true };
 });
+},
+cancelD(state, action) {
+return state.map((dragon) => {
+if (dragon.id !== action.payload) {
+return { ...dragon };
+}
+return { ...dragon, reserved: false };
+});
+},
+},
+extraReducers(builder) {
+builder.addCase(getDragonData.fulfilled, (state, action) => {
+const dragons = action.payload;
+return dragons;
+});
+},
+});
+
+export const { cancelD, reserveD } = dragonsSlice.actions;
 
 export default dragonsSlice.reducer;

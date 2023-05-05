@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import '../styles/profile.css';
-import { RocketsData } from '../../redux/rockets/rocketSlice';
 
 function Profile() {
   const joinedMissions = useSelector((state) => state.Mission.joinedMissions);

@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import '../styles/profile.css';
 import { RocketsData } from '../../redux/rockets/rocketSlice';
 
@@ -19,7 +19,7 @@ function Profile() {
       </div>
       <div className="rockets">
         <h2>My Rockets</h2>
-        {displayData.map((rockets) => (
+        {RocketsData.map((rockets) => (
           <div key={rockets.id} className="rockets-display">
             { rockets.name }
           </div>

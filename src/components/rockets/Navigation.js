@@ -13,7 +13,6 @@ function Navigation() {
       <ul className="navigation">
         <li><NavLink className="navigation-item" activeClassName="is-active" to="/">Rockets</NavLink></li>
         <li><NavLink className="navigation-item" activeClassName="is-active" to="/missionPage">Missions</NavLink></li>
-        <li><NavLink className="navigation-item" activeClassName="is-active" to="/Dragonspage">Dragons</NavLink></li>
         <line className="border" />
         <li>
           <NavLink className="navigation-item" activeClassName="is-active" to="/profilePage">My Profile</NavLink>
